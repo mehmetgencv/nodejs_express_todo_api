@@ -1,0 +1,17 @@
+const express = require("express");
+const app = express();
+require("dotenv").config();
+require("./src/config/databaseconnection")
+const port = process.env.PORT || 5001;
+const todoRouter = require("./src/routers/todoRouter");
+
+app.use(express.json())
+app.use("/api", todoRouter);
+
+app.get("/", (req, res) => {
+  res.send("SA");
+});
+
+app.listen(port, () => {
+  console.log(`Server ${port} portundn baslatildi.`);
+});
